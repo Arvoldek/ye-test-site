@@ -1,0 +1,1 @@
+console.log("This website is for Yeself automation");
