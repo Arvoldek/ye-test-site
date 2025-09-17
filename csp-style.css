@@ -1,0 +1,41 @@
+.brand-image {
+    opacity: 0.8;
+}
+
+.bounce-rate sup {
+    font-size: 20px;
+}
+
+#revenue-chart {
+    position: relative;
+    height: 300px;
+}
+
+#revenue-chart-canvas {
+    height: 300px;
+}
+
+#sales-chart {
+    position: relative;
+    height: 300px;
+}
+
+#sales-chart-canvas {
+    height: 300px;
+}
+
+#world-map {
+    height: 250px;
+    width: 100%;
+}
+
+#line-chart {
+    min-height: 250px;
+    height: 250px;
+    max-height: 250px;
+    max-width: 100%;
+}
+
+#calendar {
+    width: 100%;
+}
