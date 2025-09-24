@@ -3,12 +3,16 @@
 //! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 //! author : Stefan Crnjaković <stefan@hotmail.rs> : https://github.com/crnjakovic
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
@@ -28,19 +32,15 @@
             return number === 1
                 ? wordKey[0]
                 : number >= 2 && number <= 4
-                ? wordKey[1]
-                : wordKey[2];
+                  ? wordKey[1]
+                  : wordKey[2];
         },
         translate: function (number, withoutSuffix, key) {
             var wordKey = translator.words[key];
             if (key.length === 1) {
                 return withoutSuffix ? wordKey[0] : wordKey[1];
             } else {
-                return (
-                    number +
-                    ' ' +
-                    translator.correctGrammaticalCase(number, wordKey)
-                );
+                return number + ' ' + translator.correctGrammaticalCase(number, wordKey);
             }
         },
     };
@@ -53,9 +53,7 @@
             '_'
         ),
         monthsParseExact: true,
-        weekdays: 'nedelja_ponedeljak_utorak_sreda_četvrtak_petak_subota'.split(
-            '_'
-        ),
+        weekdays: 'nedelja_ponedeljak_utorak_sreda_četvrtak_petak_subota'.split('_'),
         weekdaysShort: 'ned._pon._uto._sre._čet._pet._sub.'.split('_'),
         weekdaysMin: 'ne_po_ut_sr_če_pe_su'.split('_'),
         weekdaysParseExact: true,
@@ -125,5 +123,4 @@
     });
 
     return sr;
-
-})));
+});

@@ -1,1 +1,1 @@
-console.log("This website is for Yeself automation");
+console.log('This website is for Yeself automation');

@@ -2,12 +2,16 @@
 //! locale : Icelandic [is]
 //! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
@@ -28,19 +32,14 @@
                     : 'nokkrum sekúndum';
             case 'ss':
                 if (plural(number)) {
-                    return (
-                        result +
-                        (withoutSuffix || isFuture ? 'sekúndur' : 'sekúndum')
-                    );
+                    return result + (withoutSuffix || isFuture ? 'sekúndur' : 'sekúndum');
                 }
                 return result + 'sekúnda';
             case 'm':
                 return withoutSuffix ? 'mínúta' : 'mínútu';
             case 'mm':
                 if (plural(number)) {
-                    return (
-                        result + (withoutSuffix || isFuture ? 'mínútur' : 'mínútum')
-                    );
+                    return result + (withoutSuffix || isFuture ? 'mínútur' : 'mínútum');
                 } else if (withoutSuffix) {
                     return result + 'mínúta';
                 }
@@ -49,9 +48,7 @@
                 if (plural(number)) {
                     return (
                         result +
-                        (withoutSuffix || isFuture
-                            ? 'klukkustundir'
-                            : 'klukkustundum')
+                        (withoutSuffix || isFuture ? 'klukkustundir' : 'klukkustundum')
                     );
                 }
                 return result + 'klukkustund';
@@ -100,9 +97,10 @@
             '_'
         ),
         monthsShort: 'jan_feb_mar_apr_maí_jún_júl_ágú_sep_okt_nóv_des'.split('_'),
-        weekdays: 'sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur'.split(
-            '_'
-        ),
+        weekdays:
+            'sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur'.split(
+                '_'
+            ),
         weekdaysShort: 'sun_mán_þri_mið_fim_fös_lau'.split('_'),
         weekdaysMin: 'Su_Má_Þr_Mi_Fi_Fö_La'.split('_'),
         longDateFormat: {
@@ -146,5 +144,4 @@
     });
 
     return is;
-
-})));
+});
