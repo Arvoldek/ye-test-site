@@ -911,7 +911,7 @@
   <script src="../../dist/js/demo.js"></script>
   <script>
     $(document).ready(function() {
-      $('#nav-to-2').click(function(e) {
+      $(document).on('click', '#nav-to-2', function(e) {
         e.preventDefault();
         $.get('soft-nav-2.html', function(data) {
           var newContent = $(data).find('.content').html();
@@ -919,7 +919,7 @@
           document.title = 'Soft Nav 2';
         });
       });
-      $('#nav-to-1').click(function(e) {
+      $(document).on('click', '#nav-to-1', function(e) {
         e.preventDefault();
         $.get('soft-nav-1.html', function(data) {
           var newContent = $(data).find('.content').html();
