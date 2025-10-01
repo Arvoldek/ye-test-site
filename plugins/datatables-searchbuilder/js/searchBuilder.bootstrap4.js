@@ -4,11 +4,14 @@
     (function (factory) {
         if (typeof define === 'function' && define.amd) {
             // AMD
-            define(['jquery', 'datatables.net-bs4', 'datatables.net-searchbuilder'], function ($) {
+            define([
+                'jquery',
+                'datatables.net-bs4',
+                'datatables.net-searchbuilder',
+            ], function ($) {
                 return factory($, window, document);
             });
-        }
-        else if (typeof exports === 'object') {
+        } else if (typeof exports === 'object') {
             // CommonJS
             module.exports = function (root, $) {
                 if (!root) {
@@ -22,30 +25,28 @@
                 }
                 return factory($, root, root.document);
             };
-        }
-        else {
+        } else {
             // Browser
             factory(jQuery, window, document);
         }
-    }(function ($, window, document) {
+    })(function ($, window, document) {
         var DataTable = $.fn.dataTable;
         $.extend(true, DataTable.SearchBuilder.classes, {
-            clearAll: 'btn btn-light dtsb-clearAll'
+            clearAll: 'btn btn-light dtsb-clearAll',
         });
         $.extend(true, DataTable.Group.classes, {
             add: 'btn btn-light dtsb-add',
             clearGroup: 'btn btn-light dtsb-clearGroup',
-            logic: 'btn btn-light dtsb-logic'
+            logic: 'btn btn-light dtsb-logic',
         });
         $.extend(true, DataTable.Criteria.classes, {
             condition: 'form-control dtsb-condition',
             data: 'form-control dtsb-data',
-            "delete": 'btn btn-light dtsb-delete',
+            delete: 'btn btn-light dtsb-delete',
             left: 'btn btn-light dtsb-left',
             right: 'btn btn-light dtsb-right',
-            value: 'form-control dtsb-value'
+            value: 'form-control dtsb-value',
         });
         return DataTable.searchPanes;
-    }));
-
-}());
+    });
+})();

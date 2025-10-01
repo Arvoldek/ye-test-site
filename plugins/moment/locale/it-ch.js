@@ -2,12 +2,16 @@
 //! locale : Italian (Switzerland) [it-ch]
 //! author : xfh : https://github.com/xfh
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
@@ -16,9 +20,7 @@
             '_'
         ),
         monthsShort: 'gen_feb_mar_apr_mag_giu_lug_ago_set_ott_nov_dic'.split('_'),
-        weekdays: 'domenica_lunedì_martedì_mercoledì_giovedì_venerdì_sabato'.split(
-            '_'
-        ),
+        weekdays: 'domenica_lunedì_martedì_mercoledì_giovedì_venerdì_sabato'.split('_'),
         weekdaysShort: 'dom_lun_mar_mer_gio_ven_sab'.split('_'),
         weekdaysMin: 'do_lu_ma_me_gi_ve_sa'.split('_'),
         longDateFormat: {
@@ -71,5 +73,4 @@
     });
 
     return itCh;
-
-})));
+});

@@ -3,12 +3,16 @@
 //! author : Borislav Mickov : https://github.com/B0k0
 //! author : Sashko Todorov : https://github.com/bkyceh
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
@@ -17,9 +21,7 @@
             '_'
         ),
         monthsShort: 'јан_фев_мар_апр_мај_јун_јул_авг_сеп_окт_ное_дек'.split('_'),
-        weekdays: 'недела_понеделник_вторник_среда_четврток_петок_сабота'.split(
-            '_'
-        ),
+        weekdays: 'недела_понеделник_вторник_среда_четврток_петок_сабота'.split('_'),
         weekdaysShort: 'нед_пон_вто_сре_чет_пет_саб'.split('_'),
         weekdaysMin: 'нe_пo_вт_ср_че_пе_сa'.split('_'),
         longDateFormat: {
@@ -93,5 +95,4 @@
     });
 
     return mk;
-
-})));
+});

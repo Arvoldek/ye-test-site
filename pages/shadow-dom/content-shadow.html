@@ -1,60 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Shadow DOM Content</title>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shadow DOM Content</title>
+        <!-- Google Font: Source Sans Pro -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+        />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css" />
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+        <script src="../../ye_script.js" defer></script>
+    </head>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <script src="../../ye_script.js" defer></script>
-</head>
-
-<body>
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Nested Shadow DOM Example</h3>
-                    <my-outer title="Nested Component"></my-outer>
-                    <my-outer title="Another Nested Component"></my-outer>
-                </div>
-                <div class="col-md-6">
-                    <h3>Simple Shadow DOM Example</h3>
-                    <my-form>
-                        <my-input placeholder="Name"></my-input>
-                        <my-input placeholder="Email"></my-input>
+    <body>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Nested Shadow DOM Example</h3>
+                        <my-outer title="Nested Component"></my-outer>
+                        <my-outer title="Another Nested Component"></my-outer>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Simple Shadow DOM Example</h3>
+                        <my-form>
+                            <my-input placeholder="Name"></my-input>
+                            <my-input placeholder="Email"></my-input>
+                            <my-dropdown></my-dropdown>
+                            <my-button>Submit Form</my-button>
+                        </my-form>
+                        <my-input placeholder="Standalone Input"></my-input>
                         <my-dropdown></my-dropdown>
-                        <my-button>Submit Form</my-button>
-                    </my-form>
-                    <my-input placeholder="Standalone Input"></my-input>
-                    <my-dropdown></my-dropdown>
-                    <my-button>Standalone Button</my-button>
+                        <my-button>Standalone Button</my-button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
 
-    <!-- Shadow DOM Custom Elements -->
-    <script>
-        class MyInput extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = this.getAttribute("placeholder") || "Type here...";
-                const style = document.createElement("style");
-                style.textContent = `
+        <!-- Shadow DOM Custom Elements -->
+        <script>
+            class MyInput extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.placeholder =
+                        this.getAttribute('placeholder') || 'Type here...';
+                    const style = document.createElement('style');
+                    style.textContent = `
                     input {
                         padding: 10px;
                         border: 2px solid #007bff;
@@ -68,22 +70,22 @@
                         border-color: #0056b3;
                     }
                 `;
-                shadow.appendChild(style);
-                shadow.appendChild(input);
+                    shadow.appendChild(style);
+                    shadow.appendChild(input);
+                }
             }
-        }
 
-        class MyButton extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const button = document.createElement("button");
-                button.textContent = this.textContent || "Click";
-                button.addEventListener("click", () => {
-                    console.log("Button clicked!");
-                });
-                const style = document.createElement("style");
-                style.textContent = `
+            class MyButton extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const button = document.createElement('button');
+                    button.textContent = this.textContent || 'Click';
+                    button.addEventListener('click', () => {
+                        console.log('Button clicked!');
+                    });
+                    const style = document.createElement('style');
+                    style.textContent = `
                     button {
                         background-color: #28a745;
                         color: white;
@@ -98,25 +100,25 @@
                         background-color: #218838;
                     }
                 `;
-                shadow.appendChild(style);
-                shadow.appendChild(button);
+                    shadow.appendChild(style);
+                    shadow.appendChild(button);
+                }
             }
-        }
 
-        class MyForm extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const form = document.createElement("form");
-                form.innerHTML = `
+            class MyForm extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const form = document.createElement('form');
+                    form.innerHTML = `
                     <slot></slot>
                 `;
-                form.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    console.log("Form submitted!");
-                });
-                const style = document.createElement("style");
-                style.textContent = `
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        console.log('Form submitted!');
+                    });
+                    const style = document.createElement('style');
+                    style.textContent = `
                     form {
                         border: 1px solid #ddd;
                         padding: 20px;
@@ -126,26 +128,26 @@
                         margin-bottom: 20px;
                     }
                 `;
-                shadow.appendChild(style);
-                shadow.appendChild(form);
+                    shadow.appendChild(style);
+                    shadow.appendChild(form);
+                }
             }
-        }
 
-        class MyDropdown extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const select = document.createElement("select");
-                select.innerHTML = `
+            class MyDropdown extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const select = document.createElement('select');
+                    select.innerHTML = `
                     <option value="option1">Option 1</option>
                     <option value="option2">Option 2</option>
                     <option value="option3">Option 3</option>
                 `;
-                select.addEventListener("change", (e) => {
-                    console.log("Selected:", e.target.value);
-                });
-                const style = document.createElement("style");
-                style.textContent = `
+                    select.addEventListener('change', (e) => {
+                        console.log('Selected:', e.target.value);
+                    });
+                    const style = document.createElement('style');
+                    style.textContent = `
                     select {
                         padding: 10px;
                         border: 2px solid #6c757d;
@@ -160,21 +162,21 @@
                         border-color: #495057;
                     }
                 `;
-                shadow.appendChild(style);
-                shadow.appendChild(select);
+                    shadow.appendChild(style);
+                    shadow.appendChild(select);
+                }
             }
-        }
 
-        // New nested custom elements
-        class MyInner extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = this.getAttribute("placeholder") || "Inner Input";
-                const style = document.createElement("style");
-                style.textContent = `
+            // New nested custom elements
+            class MyInner extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.placeholder = this.getAttribute('placeholder') || 'Inner Input';
+                    const style = document.createElement('style');
+                    style.textContent = `
                     input {
                         padding: 8px;
                         border: 1px solid #ccc;
@@ -183,67 +185,66 @@
                         box-sizing: border-box;
                     }
                 `;
-                shadow.appendChild(style);
-                shadow.appendChild(input);
+                    shadow.appendChild(style);
+                    shadow.appendChild(input);
+                }
             }
-        }
 
-        class MyMiddle extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const wrapper = document.createElement("div");
-                const title = document.createElement("h4");
-                title.textContent = this.getAttribute("title") || "Middle Component";
-                const inner = document.createElement("my-inner");
-                const style = document.createElement("style");
-                style.textContent = `
+            class MyMiddle extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const wrapper = document.createElement('div');
+                    const title = document.createElement('h4');
+                    title.textContent = this.getAttribute('title') || 'Middle Component';
+                    const inner = document.createElement('my-inner');
+                    const style = document.createElement('style');
+                    style.textContent = `
                     div { margin-bottom: 10px; }
                     h4 { margin-bottom: 5px; color: #495057; }
                 `;
-                wrapper.appendChild(title);
-                wrapper.appendChild(inner);
-                shadow.appendChild(style);
-                shadow.appendChild(wrapper);
+                    wrapper.appendChild(title);
+                    wrapper.appendChild(inner);
+                    shadow.appendChild(style);
+                    shadow.appendChild(wrapper);
+                }
             }
-        }
 
-        class MyOuter extends HTMLElement {
-            constructor() {
-                super();
-                const shadow = this.attachShadow({ mode: "open" });
-                const wrapper = document.createElement("div");
-                const header = document.createElement("div");
-                header.textContent = this.getAttribute("title") || "Outer Component";
-                const body = document.createElement("div");
-                const middle = document.createElement("my-middle");
-                middle.setAttribute("title", "Nested Middle");
-                const style = document.createElement("style");
-                style.textContent = `
+            class MyOuter extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    const wrapper = document.createElement('div');
+                    const header = document.createElement('div');
+                    header.textContent = this.getAttribute('title') || 'Outer Component';
+                    const body = document.createElement('div');
+                    const middle = document.createElement('my-middle');
+                    middle.setAttribute('title', 'Nested Middle');
+                    const style = document.createElement('style');
+                    style.textContent = `
                     .card { border: 1px solid #dee2e6; border-radius: .25rem; margin-bottom: 20px; }
                     .card-header { padding: .75rem 1.25rem; background-color: rgba(0,0,0,.03); border-bottom: 1px solid #dee2e6; }
                     .card-body { padding: 1.25rem; }
                 `;
-                wrapper.className = "card";
-                header.className = "card-header";
-                body.className = "card-body";
-                body.appendChild(middle);
-                wrapper.appendChild(header);
-                wrapper.appendChild(body);
-                shadow.appendChild(style);
-                shadow.appendChild(wrapper);
+                    wrapper.className = 'card';
+                    header.className = 'card-header';
+                    body.className = 'card-body';
+                    body.appendChild(middle);
+                    wrapper.appendChild(header);
+                    wrapper.appendChild(body);
+                    shadow.appendChild(style);
+                    shadow.appendChild(wrapper);
+                }
             }
-        }
 
-        customElements.define("my-input", MyInput);
-        customElements.define("my-button", MyButton);
-        customElements.define("my-form", MyForm);
-        customElements.define("my-dropdown", MyDropdown);
-        // Define new elements
-        customElements.define("my-inner", MyInner);
-        customElements.define("my-middle", MyMiddle);
-        customElements.define("my-outer", MyOuter);
-    </script>
-</body>
-
+            customElements.define('my-input', MyInput);
+            customElements.define('my-button', MyButton);
+            customElements.define('my-form', MyForm);
+            customElements.define('my-dropdown', MyDropdown);
+            // Define new elements
+            customElements.define('my-inner', MyInner);
+            customElements.define('my-middle', MyMiddle);
+            customElements.define('my-outer', MyOuter);
+        </script>
+    </body>
 </html>
