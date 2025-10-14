@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dynamic Shadow DOM Tests</title>
+    <title>Shadow DOM Tests</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -44,12 +44,8 @@
                     <div class="navbar-search-block">
                         <form class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input
-                                    class="form-control form-control-navbar"
-                                    type="search"
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                />
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                    aria-label="Search" />
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -73,18 +69,17 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img
-                                    src="../../dist/img/user1-128x128.jpg"
-                                    alt="User Avatar"
-                                    class="img-size-50 mr-3 img-circle"
-                                />
+                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 mr-3 img-circle" />
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
                                         <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                                     </h3>
                                     <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                    <p class="text-sm text-muted">
+                                        <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                    </p>
                                 </div>
                             </div>
                             <!-- Message End -->
@@ -93,18 +88,17 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img
-                                    src="../../dist/img/user8-128x128.jpg"
-                                    alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3"
-                                />
+                                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3" />
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
                                         <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
                                     </h3>
                                     <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                    <p class="text-sm text-muted">
+                                        <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                    </p>
                                 </div>
                             </div>
                             <!-- Message End -->
@@ -113,18 +107,18 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img
-                                    src="../../dist/img/user3-128x128.jpg"
-                                    alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3"
-                                />
+                                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3" />
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="float-right text-sm text-warning"><i
+                                                class="fas fa-star"></i></span>
                                     </h3>
                                     <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                    <p class="text-sm text-muted">
+                                        <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                    </p>
                                 </div>
                             </div>
                             <!-- Message End -->
@@ -198,12 +192,8 @@
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input
-                            class="form-control form-control-sidebar"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search" />
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -214,12 +204,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul
-                        class="nav nav-pills nav-sidebar flex-column"
-                        data-widget="treeview"
-                        role="menu"
-                        data-accordion="false"
-                    >
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -297,7 +283,9 @@
                                 <li class="nav-item">
                                     <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                                        <p>
+                                            Fixed Sidebar <small>+ Custom Area</small>
+                                        </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -904,13 +892,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dynamic Shadow DOM Tests</h1>
+                            <h1>Shadow DOM Tests</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">
-                                    Dynamic Shadow DOM Tests
+                                    Shadow DOM Tests
                                 </li>
                             </ol>
                         </div>
@@ -926,13 +914,53 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Dynamic Modal in Shadow DOM</h3>
+                                    <h3 class="card-title">
+                                        Static shadow DOM with togglable modal visibility
+                                    </h3>
                                 </div>
                                 <div class="card-body">
-                                    <button id="triggerButton" class="btn btn-primary">
-                                        Click Me
+                                    <button id="triggerButton" class="btn btn-danger"
+                                        data-test-id="staticShadowTriggerButton">
+                                        Toggle Static Modal
                                     </button>
                                     <div id="shadowHost"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        Dynamically injected shadow DOM, that holds a
+                                        modal
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <button id="dynamicTriggerButton" class="btn btn-success"
+                                        data-test-id="dynamicShadowTriggerButton">
+                                        Toggle Dynamic Shadow
+                                    </button>
+                                    <div id="dynamicShadowContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        Dynamically injected deeply nested shadow DOMs, that hold a modal
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <button id="nestedTriggerButton" class="btn btn-warning"
+                                        data-test-id="nestedShadowTriggerButton">
+                                        Toggle Nested Shadow
+                                    </button>
+                                    <div id="nestedShadowContainer"></div>
                                 </div>
                             </div>
                         </div>
@@ -975,6 +1003,7 @@
         // Create modal structure inside shadow root
         const modalContainer = document.createElement('div');
         modalContainer.className = 'modal-container';
+        modalContainer.setAttribute('data-test-id', 'staticShadowModalContainer');
         modalContainer.style.display = 'none'; // Initially hidden
 
         // Add styles
@@ -1042,6 +1071,22 @@
                 .modal-body p {
                     margin-bottom: 10px;
                 }
+
+                .nesting-indicator {
+                    background-color: #f8d7da;
+                    border: 1px solid #dc3545;
+                    border-radius: 5px;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    font-family: monospace;
+                    font-size: 12px;
+                }
+
+                .nesting-indicator div {
+                    margin-left: 20px;
+                    padding: 5px;
+                    border-left: 2px solid #dc3545;
+                }
             `;
 
         // Create modal content
@@ -1050,13 +1095,16 @@
         modalContent.innerHTML = `
                 <div class="modal-header">
                     <h2 class="modal-title">Modal in Shadow DOM</h2>
-                    <button class="modal-close" id="closeButton">Close</button>
+                    <button class="modal-close" id="closeButton" data-test-id="staticShadowCloseButton">Close</button>
                 </div>
                 <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="nesting-indicator" data-test-id="staticShadowNestingIndicator">
+                        <strong>Shadow DOM Nesting Structure:</strong>
+                        <div>Level 1 (Static) → <strong>Modal Here (Visibility Toggled)</strong></div>
+                    </div>
+                    <p>This modal is used for testing step execution within a static shadow DOM environment. The shadow DOM remains in the DOM at all times, only the modal's visibility is toggled.</p>
+                    <p>The purpose is to verify that hidden steps can be properly detected and executed when they are encapsulated inside shadow DOM boundaries.</p>
+                    <p>This test case helps ensure that the extension's content scripts can traverse shadow DOM trees, interact with elements that are isolated from the main document DOM, and detect changes within them.</p>
                 </div>
             `;
 
@@ -1083,6 +1131,370 @@
         modalContainer.addEventListener('click', (e) => {
             if (e.target === modalContainer) {
                 modalContainer.style.display = 'none';
+            }
+        });
+
+        // Dynamic Shadow DOM injection/removal
+        const dynamicTriggerButton = document.getElementById('dynamicTriggerButton');
+        const dynamicShadowContainer = document.getElementById(
+            'dynamicShadowContainer'
+        );
+        let dynamicShadowHost = null;
+        let isDynamicShadowVisible = false;
+
+        dynamicTriggerButton.addEventListener('click', () => {
+            if (isDynamicShadowVisible) {
+                // Remove the shadow host from DOM
+                if (dynamicShadowHost && dynamicShadowHost.parentNode) {
+                    dynamicShadowHost.parentNode.removeChild(dynamicShadowHost);
+                    dynamicShadowHost = null;
+                }
+                isDynamicShadowVisible = false;
+            } else {
+                // Create and inject shadow host with modal
+                dynamicShadowHost = document.createElement('div');
+                dynamicShadowHost.id = 'dynamicShadowHost';
+                dynamicShadowHost.setAttribute('data-test-id', 'dynamicShadowHostLevel1');
+
+                const dynamicShadowRoot = dynamicShadowHost.attachShadow({
+                    mode: 'open',
+                });
+
+                // Create modal structure
+                const dynamicModalContainer = document.createElement('div');
+                dynamicModalContainer.className = 'modal-container';
+                dynamicModalContainer.setAttribute('data-test-id', 'dynamicShadowModalContainer');
+                dynamicModalContainer.style.display = 'flex'; // Show immediately when injected
+
+                // Add styles
+                const dynamicStyle = document.createElement('style');
+                dynamicStyle.textContent = `
+                        .modal-container {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 9999;
+                        }
+
+                        .modal-content {
+                            background-color: white;
+                            padding: 30px;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            max-width: 500px;
+                            width: 90%;
+                            position: relative;
+                        }
+
+                        .modal-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 20px;
+                            padding-bottom: 15px;
+                            border-bottom: 1px solid #dee2e6;
+                        }
+
+                        .modal-title {
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin: 0;
+                            color: #343a40;
+                        }
+
+                        .modal-close {
+                            background-color: #28a745;
+                            color: white;
+                            border: none;
+                            padding: 8px 16px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 14px;
+                            transition: background-color 0.2s;
+                        }
+
+                        .modal-close:hover {
+                            background-color: #218838;
+                        }
+
+                        .modal-body {
+                            line-height: 1.6;
+                            color: #495057;
+                        }
+
+                        .modal-body p {
+                            margin-bottom: 10px;
+                        }
+
+                        .nesting-indicator {
+                            background-color: #d4edda;
+                            border: 1px solid #28a745;
+                            border-radius: 5px;
+                            padding: 10px;
+                            margin-bottom: 15px;
+                            font-family: monospace;
+                            font-size: 12px;
+                        }
+
+                        .nesting-indicator div {
+                            margin-left: 20px;
+                            padding: 5px;
+                            border-left: 2px solid #28a745;
+                        }
+                    `;
+
+                // Create modal content
+                const dynamicModalContent = document.createElement('div');
+                dynamicModalContent.className = 'modal-content';
+                dynamicModalContent.innerHTML = `
+                        <div class="modal-header">
+                            <h2 class="modal-title">Dynamically Injected Modal</h2>
+                            <button class="modal-close" id="dynamicCloseButton" data-test-id="dynamicShadowCloseButton">Close</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="nesting-indicator" data-test-id="dynamicShadowNestingIndicator">
+                                <strong>Shadow DOM Nesting Structure:</strong>
+                                <div>Level 1 (Dynamic) → <strong>Modal Here</strong></div>
+                            </div>
+                            <p>This modal tests dynamically injected shadow DOM behavior.</p>
+                            <p>The entire shadow host is created and injected into the DOM when the button is clicked, and completely removed from the DOM when toggled off.</p>
+                            <p>This test verifies that mutation observers can detect the injection and removal of shadow DOM trees, and that the extension can interact with elements inside dynamically created shadow roots.</p>
+                        </div>
+                    `;
+
+                dynamicModalContainer.appendChild(dynamicModalContent);
+
+                // Append style and modal to shadow root
+                dynamicShadowRoot.appendChild(dynamicStyle);
+                dynamicShadowRoot.appendChild(dynamicModalContainer);
+
+                // Append shadow host to container
+                dynamicShadowContainer.appendChild(dynamicShadowHost);
+
+                // Add close button event listener
+                const dynamicCloseButton =
+                    dynamicShadowRoot.getElementById('dynamicCloseButton');
+                dynamicCloseButton.addEventListener('click', () => {
+                    // Trigger the toggle to remove from DOM
+                    dynamicTriggerButton.click();
+                });
+
+                // Close modal when clicking outside the modal content
+                dynamicModalContainer.addEventListener('click', (e) => {
+                    if (e.target === dynamicModalContainer) {
+                        // Trigger the toggle to remove from DOM
+                        dynamicTriggerButton.click();
+                    }
+                });
+
+                isDynamicShadowVisible = true;
+            }
+        });
+
+        // Nested Shadow DOM injection/removal (Levels 1-2 static, Level 3 dynamic)
+        const nestedTriggerButton = document.getElementById('nestedTriggerButton');
+        const nestedShadowContainer = document.getElementById(
+            'nestedShadowContainer'
+        );
+
+        // Create Level 1: Static outer shadow host (created immediately)
+        const nestedShadowHostLevel1 = document.createElement('div');
+        nestedShadowHostLevel1.id = 'nestedShadowHostLevel1';
+        nestedShadowHostLevel1.setAttribute(
+            'data-test-id',
+            'nestedShadowOuterHostLevel1'
+        );
+        const shadowRootLevel1 = nestedShadowHostLevel1.attachShadow({
+            mode: 'open',
+        });
+
+        // Create Level 2: Static middle shadow host inside Level 1 (created immediately)
+        const shadowHostLevel2 = document.createElement('div');
+        shadowHostLevel2.id = 'nestedShadowHostLevel2';
+        shadowHostLevel2.setAttribute(
+            'data-test-id',
+            'nestedShadowMiddleHostLevel2'
+        );
+        const shadowRootLevel2 = shadowHostLevel2.attachShadow({
+            mode: 'open',
+        });
+
+        // Build static structure: Level 1 contains Level 2
+        shadowRootLevel1.appendChild(shadowHostLevel2);
+
+        // Append static Level 1 to container immediately
+        nestedShadowContainer.appendChild(nestedShadowHostLevel1);
+
+        let shadowHostLevel3 = null;
+        let isNestedShadowVisible = false;
+
+        nestedTriggerButton.addEventListener('click', () => {
+            if (isNestedShadowVisible) {
+                // Remove Level 3 from Level 2
+                if (shadowHostLevel3 && shadowHostLevel3.parentNode) {
+                    shadowRootLevel2.removeChild(shadowHostLevel3);
+                    shadowHostLevel3 = null;
+                }
+                isNestedShadowVisible = false;
+            } else {
+                // Create Level 3: Inner shadow host inside Level 2 (dynamically)
+                shadowHostLevel3 = document.createElement('div');
+                shadowHostLevel3.id = 'nestedShadowHostLevel3';
+                shadowHostLevel3.setAttribute(
+                    'data-test-id',
+                    'nestedShadowInnerHostLevel3'
+                );
+
+                const shadowRootLevel3 = shadowHostLevel3.attachShadow({
+                    mode: 'open',
+                });
+
+                // Create modal structure inside Level 3 (deepest level)
+                const nestedModalContainer = document.createElement('div');
+                nestedModalContainer.className = 'modal-container';
+                nestedModalContainer.setAttribute('data-test-id', 'nestedShadowModalContainer');
+                nestedModalContainer.style.display = 'flex'; // Show immediately when injected
+
+                // Add styles to Level 3
+                const nestedStyle = document.createElement('style');
+                nestedStyle.textContent = `
+                        .modal-container {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 9999;
+                        }
+
+                        .modal-content {
+                            background-color: white;
+                            padding: 30px;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            max-width: 500px;
+                            width: 90%;
+                            position: relative;
+                        }
+
+                        .modal-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 20px;
+                            padding-bottom: 15px;
+                            border-bottom: 1px solid #dee2e6;
+                        }
+
+                        .modal-title {
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin: 0;
+                            color: #343a40;
+                        }
+
+                        .modal-close {
+                            background-color: #ffc107;
+                            color: #212529;
+                            border: none;
+                            padding: 8px 16px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 14px;
+                            transition: background-color 0.2s;
+                            font-weight: 600;
+                        }
+
+                        .modal-close:hover {
+                            background-color: #e0a800;
+                        }
+
+                        .modal-body {
+                            line-height: 1.6;
+                            color: #495057;
+                        }
+
+                        .modal-body p {
+                            margin-bottom: 10px;
+                        }
+
+                        .nesting-indicator {
+                            background-color: #fff3cd;
+                            border: 1px solid #ffc107;
+                            border-radius: 5px;
+                            padding: 10px;
+                            margin-bottom: 15px;
+                            font-family: monospace;
+                            font-size: 12px;
+                        }
+
+                        .nesting-indicator div {
+                            margin-left: 20px;
+                            padding: 5px;
+                            border-left: 2px solid #ffc107;
+                        }
+                    `;
+
+                // Create modal content
+                const nestedModalContent = document.createElement('div');
+                nestedModalContent.className = 'modal-content';
+                nestedModalContent.innerHTML = `
+                        <div class="modal-header">
+                            <h2 class="modal-title">Deeply Nested Modal</h2>
+                            <button class="modal-close" id="nestedCloseButton" data-test-id="nestedShadowCloseButton">Close</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="nesting-indicator" data-test-id="nestedShadowNestingIndicator">
+                                <strong>Shadow DOM Nesting Structure:</strong>
+                                <div>Level 1 (Static)
+                                    <div>Level 2 (Static)
+                                        <div>Level 3 (Dynamic) → <strong>Modal Here</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>This modal tests deeply nested shadow DOM behavior with three levels of shadow roots.</p>
+                            <p>The outer two shadow DOMs (Levels 1 and 2) remain static in the DOM. When toggled, only Level 3 shadow DOM is dynamically injected/removed from Level 2, with the modal rendered inside Level 3.</p>
+                            <p>This test verifies that mutation observers can detect changes in deeply nested shadow DOM structures, and that the extension can traverse multiple shadow boundaries to interact with elements.</p>
+                        </div>
+                    `;
+
+                nestedModalContainer.appendChild(nestedModalContent);
+
+                // Build the nested structure
+                // Level 3 (innermost): Add style and modal
+                shadowRootLevel3.appendChild(nestedStyle);
+                shadowRootLevel3.appendChild(nestedModalContainer);
+
+                // Level 2 (static): Add Level 3 host dynamically
+                shadowRootLevel2.appendChild(shadowHostLevel3);
+
+                // Add close button event listener
+                const nestedCloseButton =
+                    shadowRootLevel3.getElementById('nestedCloseButton');
+                nestedCloseButton.addEventListener('click', () => {
+                    // Trigger the toggle to remove from DOM
+                    nestedTriggerButton.click();
+                });
+
+                // Close modal when clicking outside the modal content
+                nestedModalContainer.addEventListener('click', (e) => {
+                    if (e.target === nestedModalContainer) {
+                        // Trigger the toggle to remove from DOM
+                        nestedTriggerButton.click();
+                    }
+                });
+
+                isNestedShadowVisible = true;
             }
         });
     </script>
