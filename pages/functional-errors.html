@@ -17,6 +17,354 @@
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="icon" type="image/png" href="../dist/img/favicon.png" />
   <script src="../ye_script.js" defer></script>
+  <style>
+    .main-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .content-wrapper-functional {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .examples-column {
+      background: #f5f5f5;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .generator-column {
+      background: white;
+      border-left: 1px solid #e0e0e0;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .section {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px 0;
+      color: #555;
+      font-size: 16px;
+    }
+
+    .error-example {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border-left: 4px solid #dc3545;
+      background-color: #fff5f5;
+      font-size: 13px;
+    }
+
+    .error-example strong {
+      color: #dc3545;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .alert {
+      padding: 12px 15px;
+      border-radius: 6px;
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .alert-danger {
+      background-color: #f8d7da;
+      border: 1px solid #f5c2c7;
+      color: #842029;
+    }
+
+    .alert-warning {
+      background-color: #fff3cd;
+      border: 1px solid #ffecb5;
+      color: #664d03;
+    }
+
+    .alert-error {
+      background-color: #ffe0e0;
+      border: 1px solid #ffcccc;
+      color: #a02020;
+    }
+
+    .form-group {
+      margin: 10px 0;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #333;
+      font-size: 13px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .form-control.is-invalid {
+      border-color: #dc3545;
+    }
+
+    .error-message,
+    .form-error,
+    .input-error,
+    .validation-error {
+      color: #dc3545;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .rule-badge {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .generator-header {
+      background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+      border: 2px solid #667eea;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .generator-header h2 {
+      color: #667eea;
+      font-size: 18px;
+      margin: 0 0 5px 0;
+    }
+
+    .generator-header p {
+      font-size: 12px;
+      color: #666;
+      margin: 0;
+    }
+
+    .rule-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin: 15px 0;
+    }
+
+    .rule-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .rule-checkbox:hover {
+      border-color: #667eea;
+      background-color: #f8f9ff;
+    }
+
+    .rule-checkbox input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .rule-checkbox label {
+      cursor: pointer;
+      user-select: none;
+      font-size: 11px;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rule-checkbox input[type="checkbox"]:checked+label {
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .functional-button {
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .functional-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .functional-button.btn-success {
+      background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+    }
+
+    .functional-button.btn-danger {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    }
+
+    .functional-button.btn-warning {
+      background: linear-gradient(135deg, #ffd43b 0%, #fcc419 100%);
+      color: #333;
+    }
+
+    .mutation-selector {
+      margin: 15px 0;
+    }
+
+    .mutation-selector label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .mutation-selector select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 2px solid #667eea;
+      border-radius: 6px;
+      font-size: 13px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mutation-selector select:hover {
+      border-color: #764ba2;
+    }
+
+    .mutation-selector select:focus {
+      outline: none;
+      border-color: #764ba2;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    #generated-error-container {
+      min-height: 80px;
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 12px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      border: 2px dashed #ddd;
+      font-size: 12px;
+    }
+
+    #generated-error-container:empty::before {
+      content: 'Generated errors will appear here...';
+      color: #999;
+      font-style: italic;
+    }
+
+    .generated-item {
+      background: #fff5f5;
+      border-left: 3px solid #dc3545;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      border: 1px solid #f5c2c7;
+    }
+
+    .generated-item strong {
+      display: block;
+      color: #dc3545;
+      margin-bottom: 3px;
+      font-weight: 600;
+    }
+
+    .info-badge {
+      background: #e3f2fd;
+      border-left: 3px solid #2196f3;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 12px;
+      color: #1565c0;
+    }
+
+    /* Scrollbar styling */
+    .examples-column::-webkit-scrollbar,
+    .generator-column::-webkit-scrollbar,
+    #generated-error-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .examples-column::-webkit-scrollbar-track,
+    .generator-column::-webkit-scrollbar-track,
+    #generated-error-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .examples-column::-webkit-scrollbar-thumb,
+    .generator-column::-webkit-scrollbar-thumb,
+    #generated-error-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    .examples-column::-webkit-scrollbar-thumb:hover,
+    .generator-column::-webkit-scrollbar-thumb:hover,
+    #generated-error-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -866,7 +1214,136 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
+          <!-- Functional Errors Content -->
+          <div class="main-container">
+            <!-- Header -->
+            <div class="header">
+              <h1>🔍 Functional Error Detection - Test Page</h1>
+              <p>10 error detection rules with interactive generator</p>
+            </div>
 
+            <!-- Content -->
+            <div class="content-wrapper-functional">
+              <!-- Left Column: Examples -->
+              <div class="examples-column">
+                <div class="info-badge">
+                  📖 <strong>Static Examples:</strong> All 10 error detection rules demonstrated below
+                </div>
+
+                <!-- Rule 1: data-error -->
+                <div class="section">
+                  <span class="rule-badge">Rule 1: DATA_ERROR</span>
+                  <h2>data-error Attribute</h2>
+                  <div data-error="Connection timeout. Please check your network.">
+                    ❌ Connection timeout. Please check your network.
+                  </div>
+                </div>
+
+                <!-- Rule 2: aria-invalid (flexible) -->
+                <div class="section">
+                  <span class="rule-badge">Rule 2: ARIA_INVALID</span>
+                  <h2>aria-invalid (Flexible)</h2>
+                  <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control is-invalid" value="invalid-email" aria-invalid="true">
+                    <div class="error-message">Invalid email address</div>
+                  </div>
+                </div>
+
+                <!-- Rule 3: aria-invalid="true" (strict) -->
+                <div class="section">
+                  <span class="rule-badge">Rule 3: ARIA_INVALID_TRUE</span>
+                  <h2>aria-invalid="true" (Strict)</h2>
+                  <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control is-invalid" value="123" aria-invalid="true">
+                    <div class="error-message">Password too short</div>
+                  </div>
+                </div>
+
+                <!-- Additional rules -->
+                <div class="section">
+                  <span class="rule-badge">Rule 4: ERROR_CLASS</span>
+                  <h2>Error in Class Name</h2>
+                  <div class="form-error">⚠️ Form validation error</div>
+                </div>
+
+                <div class="section">
+                  <span class="rule-badge">Rule 5: ROLE_ALERT</span>
+                  <h2>role="alert"</h2>
+                  <div role="alert" class="error-example">
+                    🔔 Session expiring soon
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Generator -->
+              <div class="generator-column">
+                <div class="generator-header">
+                  <h2>🎮 Error Generator</h2>
+                  <p>Select rules and generate custom errors</p>
+                </div>
+
+                <div id="generated-error-container"></div>
+
+                <div class="mutation-selector">
+                  <label for="mutation-type">🔄 Mutation Type:</label>
+                  <select id="mutation-type">
+                    <option value="mutation">Attribute Mutation (mutate existing element)</option>
+                    <option value="new">New Element (add to DOM with errors)</option>
+                  </select>
+                </div>
+
+                <div class="rule-selector">
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-data-error" value="dataError">
+                    <label for="rule-data-error">data-error</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-aria-invalid" value="ariaInvalid">
+                    <label for="rule-aria-invalid">aria-invalid</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-aria-invalid-true" value="ariaInvalidTrue">
+                    <label for="rule-aria-invalid-true">aria-invalid="true"</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-error-class" value="errorClass">
+                    <label for="rule-error-class">error class</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-role-alert" value="roleAlert">
+                    <label for="rule-role-alert">role="alert"</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-id-error" value="idError">
+                    <label for="rule-id-error">error in id</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-error-slot" value="errorSlot">
+                    <label for="rule-error-slot">error slot</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-data-automation" value="dataAutomationIdError">
+                    <label for="rule-data-automation">data-automation-id</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-test-id" value="errorTestId">
+                    <label for="rule-test-id">data-test-id</label>
+                  </div>
+                  <div class="rule-checkbox">
+                    <input type="checkbox" id="rule-bootstrap" value="bootstrapAlertClass">
+                    <label for="rule-bootstrap">bootstrap alert</label>
+                  </div>
+                </div>
+
+                <button class="functional-button" onclick="generateSelectedError()">✨ Generate Selected</button>
+                <button class="functional-button btn-warning" onclick="generateRandomError()">🎲 Random Error</button>
+                <button class="functional-button btn-success" onclick="generateMultiRuleError()">🎯 Multi-Rule (3 random)</button>
+                <button class="functional-button btn-danger" onclick="clearGeneratedErrors()">🗑️ Clear All</button>
+              </div>
+            </div>
+          </div>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
@@ -900,6 +1377,156 @@
   <script src="../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
+
+  <script>
+    let errorCounter = 0;
+
+    // Rule generators
+    const ruleGenerators = {
+      dataError: (element) => {
+        element.setAttribute('data-error', 'Dynamic error at ' + new Date().toLocaleTimeString());
+      },
+      ariaInvalid: (element) => {
+        element.setAttribute('aria-invalid', 'grammar');
+      },
+      ariaInvalidTrue: (element) => {
+        element.setAttribute('aria-invalid', 'true');
+      },
+      errorClass: (element) => {
+        element.className += ' form-error validation-error';
+      },
+      roleAlert: (element) => {
+        element.setAttribute('role', 'alert');
+      },
+      idError: (element) => {
+        element.id = 'error-element-' + errorCounter;
+      },
+      errorSlot: (element) => {
+        element.setAttribute('slot', 'error-message-slot');
+      },
+      dataAutomationIdError: (element) => {
+        element.setAttribute('data-automation-id', 'errorWidget' + errorCounter);
+      },
+      errorTestId: (element) => {
+        element.setAttribute('data-test-id', 'generated-error-' + errorCounter);
+      },
+      bootstrapAlertClass: (element) => {
+        element.className += ' alert alert-danger';
+      }
+    };
+
+    const ruleTexts = {
+      dataError: '❌ Connection timeout. Please check your network.',
+      ariaInvalid: '⚠️ Grammar error detected in text field.',
+      ariaInvalidTrue: '🔒 Password is too short (minimum 8 characters).',
+      errorClass: '⚠️ Form validation error - please check all fields.',
+      roleAlert: '🔔 Session expiring soon - please save your work.',
+      idError: '❌ Username already taken - please choose another.',
+      errorSlot: '🔴 Error message assigned to slot.',
+      dataAutomationIdError: '📍 Automation ID error detected in widget.',
+      errorTestId: '🧪 Test ID error - element failed validation.',
+      bootstrapAlertClass: '🚨 Critical error: Operation failed.'
+    };
+
+    function getSelectedRules() {
+      const checkboxes = document.querySelectorAll('.rule-checkbox input[type="checkbox"]:checked');
+      return Array.from(checkboxes).map(cb => cb.value);
+    }
+
+    function getMutationType() {
+      return document.getElementById('mutation-type').value;
+    }
+
+    function createErrorElement(rules) {
+      errorCounter++;
+      const container = document.getElementById('generated-error-container');
+      const mutationType = getMutationType();
+
+      const errorTexts = rules.filter(rule => ruleTexts[rule]).map(rule => ruleTexts[rule]);
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'generated-item';
+
+      if (mutationType === 'new') {
+        let content = `<strong>Error #${errorCounter}</strong>`;
+        content += `<div style="margin: 5px 0; font-size: 12px; line-height: 1.5;">`;
+        if (errorTexts.length > 0) {
+          content += errorTexts.map((text, idx) =>
+            `<div style="margin-bottom: ${idx < errorTexts.length - 1 ? '4px' : '0'};">${text}</div>`
+          ).join('');
+        }
+        content += `</div>`;
+        content += `<div style="font-size: 10px; color: #666;">Rules: ${rules.join(', ')} | Mode: <span style="color: #667eea;">🆕 New Element (childList)</span></div>`;
+
+        errorDiv.innerHTML = content;
+        rules.forEach(rule => {
+          if (ruleGenerators[rule]) {
+            ruleGenerators[rule](errorDiv);
+          }
+        });
+        container.insertBefore(errorDiv, container.firstChild);
+      } else {
+        let initialContent = `<strong>Error #${errorCounter}</strong>`;
+        initialContent += `<div style="margin: 5px 0; font-size: 12px; line-height: 1.5;">`;
+        if (errorTexts.length > 0) {
+          initialContent += errorTexts.map((text, idx) =>
+            `<div style="margin-bottom: ${idx < errorTexts.length - 1 ? '4px' : '0'};">${text}</div>`
+          ).join('');
+        }
+        initialContent += `</div>`;
+        initialContent += `<div style="font-size: 10px; color: #666;">Rules: ${rules.join(', ')} | Status: <span style="color: #ffa500;">⏳ Pending mutation...</span></div>`;
+
+        errorDiv.innerHTML = initialContent;
+        container.insertBefore(errorDiv, container.firstChild);
+
+        setTimeout(() => {
+          rules.forEach(rule => {
+            if (ruleGenerators[rule]) {
+              ruleGenerators[rule](errorDiv);
+            }
+          });
+
+          let mutatedContent = `<strong>Error #${errorCounter}</strong>`;
+          mutatedContent += `<div style="margin: 5px 0; font-size: 12px; line-height: 1.5;">`;
+          if (errorTexts.length > 0) {
+            mutatedContent += errorTexts.map((text, idx) =>
+              `<div style="margin-bottom: ${idx < errorTexts.length - 1 ? '4px' : '0'};">${text}</div>`
+            ).join('');
+          }
+          mutatedContent += `</div>`;
+          mutatedContent += `<div style="font-size: 10px; color: #666;">Rules: ${rules.join(', ')} | Mode: <span style="color: #52c41a;">✅ Attribute Mutation</span></div>`;
+
+          errorDiv.innerHTML = mutatedContent;
+        }, 100);
+      }
+    }
+
+    function generateSelectedError() {
+      const selectedRules = getSelectedRules();
+      if (selectedRules.length === 0) {
+        alert('Please select at least one rule!');
+        return;
+      }
+      createErrorElement(selectedRules);
+    }
+
+    function generateRandomError() {
+      const allRules = Object.keys(ruleGenerators);
+      const randomRule = allRules[Math.floor(Math.random() * allRules.length)];
+      createErrorElement([randomRule]);
+    }
+
+    function generateMultiRuleError() {
+      const allRules = Object.keys(ruleGenerators);
+      const shuffled = allRules.sort(() => 0.5 - Math.random());
+      const selectedRules = shuffled.slice(0, 3);
+      createErrorElement(selectedRules);
+    }
+
+    function clearGeneratedErrors() {
+      document.getElementById('generated-error-container').innerHTML = '';
+      errorCounter = 0;
+    }
+  </script>
 </body>
 
 </html>
