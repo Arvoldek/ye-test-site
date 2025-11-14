@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YesElf | Functional Errors Component Tests</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css" />
+    <link rel="icon" type="image/png" href="../dist/img/favicon.png" />
+    <script src="../ye_script.js" defer></script>
+    <style>
+        .submit-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            padding-top: 10px;
+        }
+
+        .submit-button {
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 0px;
+            padding: 5px 10px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #0069d9;
+            border: 1px solid #0069d9;
+        }
+
+        .submit-button--secondary {
+            background-color: #ff0000c9;
+            border: 1px solid #ff0000c9;
+            border-radius: 0px;
+            padding: 5px 10px;
+            color: #fff;
+            display: none;
+        }
+
+        .submit-button--secondary:hover {
+            background-color: #ff0000;
+            border: 1px solid #ff0000;
+        }
+
+        .submit-button--clear {
+            background-color: #ff0000;
+            border: 1px solid #ff0000;
+        }
+
+        .submit-button--clear:hover {
+            background-color: #cc0000;
+            border: 1px solid #cc0000;
+        }
+
+        .submit-button--mutate {
+            background-color: #28a745;
+            border: 1px solid #28a745;
+            border-radius: 0px;
+            padding: 5px 10px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .submit-button--mutate:hover {
+            background-color: #218838;
+            border: 1px solid #218838;
+        }
+
+        .submit-button--mutate.active {
+            background-color: #ffc107;
+            border: 1px solid #ffc107;
+            color: #000;
+        }
+
+        .submit-button--mutate.active:hover {
+            background-color: #e0a800;
+            border: 1px solid #e0a800;
+        }
+
+        .message {
+            font-size: 14px;
+            line-height: calc(18px * 1.5);
+            font-style: italic;
+            color: #666;
+            margin-bottom: 12px;
+
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .message p {
+            margin: 0;
+        }
+
+        #error-message {
+            color: #ff0000;
+            font-style: normal;
+        }
+
+        #error-message p {
+            margin: 0;
+        }
+
+        #warning-message {
+            color: #ff8c00;
+            font-style: normal;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        #warning-message p {
+            margin: 0;
+        }
+
+        #description {
+            font-size: 14px;
+            line-height: calc(18px * 1.5);
+            margin-top: 8px;
+            margin-bottom: 0px;
+        }
+
+        .card-header {
+            background: #fff;
+            margin-bottom: 12px;
+            padding-top: 20px;
+        }
+
+        .card-body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="../index3.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="../index3.html" class="brand-link">
+                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: 0.8" />
+                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Alexander Pierce</a>
+                    </div>
+                </div>
+
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search" />
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-header">EXAMPLES</li>
+                        <li class="nav-item">
+                            <a href="functional-errors.html" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Functional Errors
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="functional-errors-mutation-modes.html" class="nav-link active">
+                                <i class="nav-icon fas fa-vial"></i>
+                                <p>
+                                    FE Component Tests
+                                    <span class="right badge badge-success">New</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="calendar.html" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Calendar
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Functional Errors - Component Tests</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">
+                                    FE Component Tests
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+
+            <template id="error-message-template">
+                <div class="message" id="error-message">
+                    <b></b>
+                    <p></p>
+                </div>
+            </template>
+
+            <template id="warning-message-template">
+                <div class="message" id="warning-message">
+                    <b></b>
+                    <p></p>
+                </div>
+            </template>
+
+            <template id="default-message-template">
+                <div class="message" id="default-message">
+                    <b></b>
+                    <p></p>
+                </div>
+            </template>
+
+            <template id="test-case-template">
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title" id="title">Single Mutation</h3>
+                                <br />
+                                <p id="description">
+                                    In this test case, we will generate a single
+                                    mutation on a web page.
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <div class="messages"></div>
+                            </div>
+                            <div id="submit-buttons" class="submit-buttons" data-mode="hide">
+                                <button class="submit-button" id="submitBtn">
+                                    Create Messages
+                                </button>
+                                <button class="submit-button" id="manualTriggerBtn">
+                                    Manual Trigger
+                                </button>
+                                <button class="submit-button submit-button--clear" id="clearMessagesBtn"
+                                    style="display: none;">
+                                    Clear Messages
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </template>
+
+            <div id="content-wrapper"></div>
+        </div>
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block"><b>Version</b> 3.1.0</div>
+            <strong>Copyright &copy; 2014-2021
+                <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+
+    <script>
+        const modes = {
+            show: 'show',
+            hide: 'hide',
+        };
+
+        const errorMessages = [
+            'Connection timeout. Please check your network.',
+            'Invalid email address format.',
+            'Password must be at least 8 characters long.',
+            'Username is already taken.',
+            'Form validation failed. Please check all required fields.',
+            'Session has expired. Please log in again.',
+            'Payment processing failed. Please try again.',
+            'File upload failed. Maximum size exceeded.',
+            'Database connection error. Please contact support.',
+            'API request failed with status 500.',
+            'Authentication token is invalid or expired.',
+            "Permission denied. You don't have access to this resource.",
+            'Rate limit exceeded. Please try again later.',
+            'Invalid credit card number.',
+            'Shipping address is incomplete.',
+            'Product is out of stock.',
+            'Coupon code has expired or is invalid.',
+            'Email delivery failed. Please verify your email address.',
+            'Server error occurred. Please refresh the page.',
+            'Data synchronization failed. Please try again.',
+        ];
+
+        const warningMessages = [
+            'Your session will expire in 5 minutes.',
+            'Low disk space. Consider freeing up some storage.',
+            'This action cannot be undone.',
+            'Password strength is weak. Consider using a stronger password.',
+            'Unsaved changes detected.',
+            'Network connection is unstable.',
+            'Browser cache is full. Performance may be affected.',
+            'This feature is deprecated and will be removed soon.',
+            'File size is larger than recommended.',
+            'You are using an outdated browser version.',
+            'SSL certificate will expire soon.',
+            'Multiple login attempts detected.',
+            'Cookie preferences not set.',
+            'Third-party cookies are blocked.',
+            'Pop-ups are disabled for this site.',
+        ];
+
+        const generateRandomErrorText = () => {
+            return errorMessages[Math.floor(Math.random() * errorMessages.length)];
+        };
+
+        const generateRandomWarningText = () => {
+            return warningMessages[
+                Math.floor(Math.random() * warningMessages.length)
+            ];
+        };
+
+        const generateDefaultMessage = (suffix = '') => {
+            const placeholderTemplate = document.getElementById(
+                'default-message-template'
+            );
+            if (!placeholderTemplate) {
+                throw new Error('Placeholder template not found');
+            }
+            const message = placeholderTemplate.content.cloneNode(true);
+            const baseText = 'Click on the "Create Message" button to generate errors.';
+            message.querySelector('b').textContent = 'Message:';
+            message.querySelector('p').textContent = suffix ? baseText + ' (' + suffix + ')' : baseText;
+            return message;
+        };
+
+        const removeDefaultMessage = (element) => {
+            const defaultMessage = element.querySelector('#default-message');
+            if (!defaultMessage) {
+                throw new Error('Default message not found');
+            }
+            defaultMessage.remove();
+        };
+
+        const generateErrorMessage = (suffix = '') => {
+            // Randomly choose between error (70%) and warning (30%)
+            const isWarning = Math.random() < 0.3;
+            const templateId = isWarning
+                ? 'warning-message-template'
+                : 'error-message-template';
+            const template = document.getElementById(templateId);
+
+            if (!template) {
+                throw new Error(`${templateId} not found`);
+            }
+
+            const message = template.content.cloneNode(true);
+            const label = isWarning ? 'Warning:' : 'Error:';
+            const baseText = isWarning
+                ? generateRandomWarningText()
+                : generateRandomErrorText();
+            const textContent = suffix ? baseText + ' (' + suffix + ')' : baseText;
+
+            message.querySelector('b').textContent = label;
+            message.querySelector('p').textContent = textContent;
+
+            return message;
+        };
+
+        const removeErrorMessage = (element) => {
+            const errorMessage = element.querySelector('#error-message');
+            const warningMessage = element.querySelector('#warning-message');
+
+            if (errorMessage) {
+                errorMessage.remove();
+            } else if (warningMessage) {
+                warningMessage.remove();
+            } else {
+                throw new Error('Error or warning message not found');
+            }
+        };
+
+        const generateAndAddMessages = (element, noOfContainers, identifier = '') => {
+            for (let idx = 0; idx < noOfContainers; idx++) {
+                const messageContainer = generateDefaultMessage();
+                element.prepend(messageContainer);
+                element.children[0].setAttribute('tc-id', `${identifier}--${idx}`);
+            }
+        };
+
+        const generateTestCase = () => {
+            const testCaseTemplate = document.getElementById('test-case-template');
+            if (!testCaseTemplate) {
+                throw new Error('Test case template not found');
+            }
+            const clone = testCaseTemplate.content.cloneNode(true);
+            return clone;
+        };
+
+        const setTestCaseInfo = (element, title, description) => {
+            const titleElement = element.querySelector('#title');
+            if (!titleElement) {
+                throw new Error('Title element not found');
+            }
+            titleElement.textContent = title;
+
+            const descriptionElement = element.querySelector('#description');
+            if (!descriptionElement) {
+                throw new Error('Description element not found');
+            }
+            descriptionElement.textContent = description;
+        };
+
+        const getContentWrapper = () => {
+            const contentWrapper = document.getElementById('content-wrapper');
+            if (!contentWrapper) {
+                throw new Error('Content wrapper not found');
+            }
+            return contentWrapper;
+        };
+
+        const getMessageContainer = (element) => {
+            const messageContainer = element.querySelector('.card-body > .messages');
+            if (!messageContainer) {
+                throw new Error('Message container not found');
+            }
+            return messageContainer;
+        };
+
+        const updateMessageInPlace = (element, type, text = '', suffix = '') => {
+            element.id = type;
+
+            const b = element.querySelector('b');
+            const p = element.querySelector('p');
+
+            if (!b || !p) {
+                throw new Error('Message structure is invalid - missing b or p elements');
+            }
+
+            if (type === 'default-message') {
+                b.textContent = 'Message:';
+                const baseText = 'Click on the "Create Message" button to generate errors.';
+                p.textContent = suffix ? baseText + ' (' + suffix + ')' : baseText;
+            } else if (type === 'error-message') {
+                b.textContent = 'Error:';
+                p.textContent = text;
+            } else if (type === 'warning-message') {
+                b.textContent = 'Warning:';
+                p.textContent = text;
+            }
+        };
+
+        const changeErrorMessage = (messageContainer, idx, attributesMode = false) => {
+            const currentMessage = messageContainer.children[idx];
+
+            if (attributesMode) {
+                // Attributes Change Mode: update existing element
+                const isWarning = Math.random() < 0.3;
+                const type = isWarning ? 'warning-message' : 'error-message';
+                const baseText = isWarning
+                    ? generateRandomWarningText()
+                    : generateRandomErrorText();
+                const text = baseText + ' (Attributes Change Mode)';
+                updateMessageInPlace(currentMessage, type, text);
+            } else {
+                // Insert Node Mode: create new element
+                const newMessage = generateErrorMessage('Insert Node Mode');
+                messageContainer.replaceChild(newMessage, currentMessage);
+            }
+        };
+
+        const clearMessage = (messageContainer, idx, attributesMode = false) => {
+            const currentMessage = messageContainer.children[idx];
+            if (currentMessage.id === 'default-message') {
+                return;
+            }
+
+            if (attributesMode) {
+                // Attributes Change Mode: update existing element
+                updateMessageInPlace(currentMessage, 'default-message', '', 'Attributes Change Mode');
+            } else {
+                // Insert Node Mode: create new element
+                const newMessage = generateDefaultMessage('Insert Node Mode');
+                messageContainer.replaceChild(newMessage, currentMessage);
+            }
+        };
+
+        const setupListeners = (tc, mutationConfig = null) => {
+            const submitButtons = tc.querySelector('.submit-buttons');
+            if (!submitButtons) {
+                throw new Error('Submit buttons not found');
+            }
+            const [submitBtn, manualTriggerBtn, clearMessagesBtn] = Array.from(submitButtons.children);
+
+            // Check if we have mutation config
+            const hasMutationMode = mutationConfig && (mutationConfig.mutateAfter !== undefined);
+
+            // If mutation config is provided, set up mutation mode
+            if (hasMutationMode) {
+                setupMutationMode(tc, submitBtn, manualTriggerBtn, clearMessagesBtn, mutationConfig);
+            }
+        };
+
+        const setupMutationMode = (
+            tc,
+            submitBtn,
+            manualTriggerBtn,
+            clearMessagesBtn,
+            {
+                mutateAfter,
+                mutateErrors = false,
+                mutateStates = false,
+                mutateRandomly = false,
+                attributesMode = false,
+                mixedMode = false,
+            }
+        ) => {
+            let mutationInterval = null;
+            let isErrorState = false;
+
+            const startMutation = () => {
+                if (mutationInterval) return; // Already running
+
+                // Hide Manual Trigger and Clear Messages buttons during mutation
+                manualTriggerBtn.style.display = 'none';
+                clearMessagesBtn.style.display = 'none';
+
+                submitBtn.textContent = 'Stop Mutation';
+                submitBtn.classList.remove('submit-button--mutate');
+                submitBtn.classList.add('submit-button--clear');
+
+                const messageContainer = getMessageContainer(tc);
+                const intervalMs = mutateAfter * 1000;
+
+                mutationInterval = setInterval(() => {
+                    if (mutateRandomly) {
+                        // Randomly choose for each message independently
+                        for (
+                            let idx = 0;
+                            idx < messageContainer.children.length;
+                            idx++
+                        ) {
+                            const shouldCycleErrors = Math.random() < 0.5;
+                            const currentMessage = messageContainer.children[idx];
+                            const isDefaultMessage =
+                                currentMessage.id === 'default-message';
+                            const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+
+                            if (shouldCycleErrors) {
+                                // Cycle to a new error message
+                                changeErrorMessage(messageContainer, idx, useAttributesMode);
+                            } else {
+                                // Toggle between error state and default state
+                                if (isDefaultMessage) {
+                                    changeErrorMessage(messageContainer, idx, useAttributesMode);
+                                } else {
+                                    clearMessage(messageContainer, idx, useAttributesMode);
+                                }
+                            }
+                        }
+                    } else if (mutateErrors) {
+                        // Cycle between different error messages
+                        for (
+                            let idx = 0;
+                            idx < messageContainer.children.length;
+                            idx++
+                        ) {
+                            const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+                            changeErrorMessage(messageContainer, idx, useAttributesMode);
+                        }
+                    } else if (mutateStates) {
+                        // Toggle between error states and default states
+                        for (
+                            let idx = 0;
+                            idx < messageContainer.children.length;
+                            idx++
+                        ) {
+                            const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+                            if (isErrorState) {
+                                clearMessage(messageContainer, idx, useAttributesMode);
+                            } else {
+                                changeErrorMessage(messageContainer, idx, useAttributesMode);
+                            }
+                        }
+                        isErrorState = !isErrorState;
+                    }
+                }, intervalMs);
+            };
+
+            const stopMutation = () => {
+                if (mutationInterval) {
+                    clearInterval(mutationInterval);
+                    mutationInterval = null;
+                    isErrorState = false;
+
+                    submitBtn.textContent = 'Start Mutation';
+                    submitBtn.classList.add('submit-button--mutate');
+                    submitBtn.classList.remove('submit-button--clear');
+
+                    // Show Manual Trigger button again
+                    manualTriggerBtn.style.display = '';
+
+                    // Clear all messages when stopping
+                    const messageContainer = getMessageContainer(tc);
+                    for (let idx = 0; idx < messageContainer.children.length; idx++) {
+                        clearMessage(messageContainer, idx, attributesMode);
+                    }
+
+                    // Hide Clear Messages button
+                    clearMessagesBtn.style.display = 'none';
+                }
+            };
+
+            // Submit button toggles mutation on/off
+            submitBtn.addEventListener('click', () => {
+                if (mutationInterval) {
+                    stopMutation();
+                } else {
+                    startMutation();
+                }
+            });
+
+            // Manual trigger button
+            if (mutateErrors) {
+                // Error Cycling mode: always cycle through errors
+                manualTriggerBtn.addEventListener('click', () => {
+                    const messageContainer = getMessageContainer(tc);
+
+                    // Always cycle to new error/warning messages
+                    for (
+                        let idx = 0;
+                        idx < messageContainer.children.length;
+                        idx++
+                    ) {
+                        const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+                        changeErrorMessage(messageContainer, idx, useAttributesMode);
+                    }
+
+                    // Show Clear Messages button after first click
+                    clearMessagesBtn.style.display = '';
+                });
+            } else if (mutateRandomly) {
+                // Random mode: randomly cycle or toggle for each message
+                manualTriggerBtn.addEventListener('click', () => {
+                    const messageContainer = getMessageContainer(tc);
+
+                    // Randomly choose for each message
+                    for (
+                        let idx = 0;
+                        idx < messageContainer.children.length;
+                        idx++
+                    ) {
+                        const shouldCycleErrors = Math.random() < 0.5;
+                        const currentMessage = messageContainer.children[idx];
+                        const isDefaultMessage = currentMessage.id === 'default-message';
+                        const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+
+                        if (shouldCycleErrors) {
+                            // Cycle to a new error message
+                            changeErrorMessage(messageContainer, idx, useAttributesMode);
+                        } else {
+                            // Toggle between error state and default state
+                            if (isDefaultMessage) {
+                                changeErrorMessage(messageContainer, idx, useAttributesMode);
+                            } else {
+                                clearMessage(messageContainer, idx, useAttributesMode);
+                            }
+                        }
+                    }
+
+                    // Show Clear Messages button after first click
+                    clearMessagesBtn.style.display = '';
+                });
+            } else if (mutateStates) {
+                // State Toggling mode: toggle between showing and hiding
+                let manualIsErrorState = false;
+
+                manualTriggerBtn.addEventListener('click', () => {
+                    const messageContainer = getMessageContainer(tc);
+
+                    // Toggle all messages between error and default states
+                    for (
+                        let idx = 0;
+                        idx < messageContainer.children.length;
+                        idx++
+                    ) {
+                        const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+                        if (manualIsErrorState) {
+                            clearMessage(messageContainer, idx, useAttributesMode);
+                        } else {
+                            changeErrorMessage(messageContainer, idx, useAttributesMode);
+                        }
+                    }
+                    manualIsErrorState = !manualIsErrorState;
+
+                    // Don't show Clear Messages button - just toggle back and forth
+                });
+            }
+
+            // Clear Messages button: clears messages and stops mutation
+            clearMessagesBtn.addEventListener('click', () => {
+                // Stop mutation if running
+                if (mutationInterval) {
+                    clearInterval(mutationInterval);
+                    mutationInterval = null;
+                    isErrorState = false;
+
+                    submitBtn.textContent = 'Start Mutation';
+                    submitBtn.classList.add('submit-button--mutate');
+                    submitBtn.classList.remove('submit-button--clear');
+
+                    // Show Manual Trigger button
+                    manualTriggerBtn.style.display = '';
+                }
+
+                // Clear all messages
+                const messageContainer = getMessageContainer(tc);
+                for (let idx = 0; idx < messageContainer.children.length; idx++) {
+                    const useAttributesMode = mixedMode ? Math.random() < 0.5 : attributesMode;
+                    clearMessage(messageContainer, idx, useAttributesMode);
+                }
+
+                // Hide Clear Messages button
+                clearMessagesBtn.style.display = 'none';
+            });
+
+            // Update button text for mutation mode
+            submitBtn.textContent = 'Start Mutation';
+            submitBtn.classList.add('submit-button--mutate');
+        };
+
+        const initialiseTc = (
+            title,
+            description,
+            count = 1,
+            mutationConfig = null
+        ) => {
+            try {
+                const contentWrapper = getContentWrapper();
+                contentWrapper.append(generateTestCase());
+                const tc =
+                    contentWrapper.children[contentWrapper.children.length - 1];
+                setTestCaseInfo(tc, title, description);
+                generateAndAddMessages(getMessageContainer(tc), count, 'tc1');
+                setupListeners(tc, mutationConfig);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        initialiseTc(
+            'State Toggling (Insert Node Mode)',
+            'Automatically toggles all messages between shown and hidden states every 1 second.',
+            6,
+            { mutateAfter: 1, mutateStates: true }
+        );
+
+        initialiseTc(
+            'State Toggling (Attributes Change Mode)',
+            'Automatically toggles all messages between shown and hidden states every 1 second.',
+            6,
+            { mutateAfter: 1, mutateStates: true, attributesMode: true }
+        );
+
+        initialiseTc(
+            'State Toggling (Mixed Mode)',
+            'Toggles states with random choice between Insert Node and Attributes Change per message.',
+            6,
+            { mutateAfter: 1, mutateStates: true, mixedMode: true }
+        );
+
+        initialiseTc(
+            'Error Cycling (Insert Node Mode)',
+            'Automatically cycles through different random error and warning messages every 1 second.',
+            6,
+            { mutateAfter: 1, mutateErrors: true }
+        );
+
+        initialiseTc(
+            'Error Cycling (Attributes Change Mode)',
+            'Automatically cycles through different random error and warning messages every 1 second.',
+            6,
+            { mutateAfter: 1, mutateErrors: true, attributesMode: true }
+        );
+
+        initialiseTc(
+            'Error Cycling (Mixed Mode)',
+            'Cycles errors with random choice between Insert Node and Attributes Change per message.',
+            6,
+            { mutateAfter: 1, mutateErrors: true, mixedMode: true }
+        );
+
+        initialiseTc(
+            'Random (Insert Node Mode)',
+            'Each message independently and randomly cycles or toggles every 1 second.',
+            6,
+            { mutateAfter: 1, mutateRandomly: true }
+        );
+
+        initialiseTc(
+            'Random (Attributes Change Mode)',
+            'Each message independently and randomly cycles or toggles every 1 second.',
+            6,
+            { mutateAfter: 1, mutateRandomly: true, attributesMode: true }
+        );
+
+        initialiseTc(
+            'Random (Mixed Mode)',
+            'Random mutations with random choice between Insert Node and Attributes Change per message.',
+            6,
+            { mutateAfter: 1, mutateRandomly: true, mixedMode: true }
+        );
+    </script>
+</body>
+
+</html>
