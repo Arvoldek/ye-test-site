@@ -54,21 +54,36 @@
     <!-- Fullscreen overlay - iframe loads and displays here FIRST -->
     <div id="preload-overlay">
         <iframe id="preloaded-frame" 
-                src="content-iframe.html" 
                 loading="eager">
         </iframe>
     </div>
 
     <!-- Script to reveal page after iframe loads (runs only once) -->
     <script>
-        document.getElementById('preloaded-frame').addEventListener('load', function() {
-            // Wait 1 second after iframe loads before showing the rest of the page
-            setTimeout(function() {
+        (function() {
+            var iframe = document.getElementById('preloaded-frame');
+            
+            function revealPage() {
                 // Don't move the iframe - just hide overlay and show page
                 // The iframe in the content area will load from cache instantly
                 document.body.classList.add('iframe-loaded');
-            }, 1500);
-        }, { once: true }); // Ensures this only runs once
+            }
+            
+            // Attach listener BEFORE setting src to guarantee we catch the load event
+            iframe.addEventListener('load', function() {
+                // Wait 1.5 seconds after iframe loads before showing the rest of the page
+                setTimeout(revealPage, 1500);
+            }, { once: true }); // Ensures this only runs once
+            
+            // Handle iframe load errors (network issues, CORS, missing resources)
+            iframe.addEventListener('error', function() {
+                // Reveal page immediately on error so users can still see content
+                revealPage();
+            }, { once: true });
+            
+            // Now set src to begin loading
+            iframe.src = 'content-iframe.html';
+        })();
     </script>
 
     <div class="wrapper">
