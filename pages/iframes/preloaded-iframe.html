@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | General Form Elements</title>
+    <title>AdminLTE 3 | Preloaded Iframe</title>
+
+    <!-- Preload iframe content for priority loading -->
+    <link rel="preload" href="content-iframe.html" as="document">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -15,9 +18,59 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="icon" type="image/png" href="../../dist/img/favicon.png" />
     <script src="../../ye_script.js" defer></script>
+
+    <!-- Hide page content until iframe loads -->
+    <style>
+        /* Fullscreen overlay that shows iframe first */
+        #preload-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: white;
+        }
+        #preload-overlay iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Hide wrapper until iframe loads */
+        .wrapper {
+            visibility: hidden;
+        }
+        /* After load: hide overlay and show wrapper */
+        body.iframe-loaded #preload-overlay {
+            display: none;
+        }
+        body.iframe-loaded .wrapper {
+            visibility: visible;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <!-- Fullscreen overlay - iframe loads and displays here FIRST -->
+    <div id="preload-overlay">
+        <iframe id="preloaded-frame" 
+                src="content-iframe.html" 
+                loading="eager">
+        </iframe>
+    </div>
+
+    <!-- Script to reveal page after iframe loads (runs only once) -->
+    <script>
+        document.getElementById('preloaded-frame').addEventListener('load', function() {
+            // Wait 1 second after iframe loads before showing the rest of the page
+            setTimeout(function() {
+                // Don't move the iframe - just hide overlay and show page
+                // The iframe in the content area will load from cache instantly
+                document.body.classList.add('iframe-loaded');
+            }, 1500);
+        }, { once: true }); // Ensures this only runs once
+    </script>
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -468,7 +521,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../iframes/single-page.html" class="nav-link active">
+                                    <a href="../iframes/single-page.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Single Page</p>
                                     </a>
@@ -476,7 +529,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../iframes/preloaded-iframe.html" class="nav-link">
+                                    <a href="../iframes/preloaded-iframe.html" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Preloaded</p>
                                     </a>
@@ -912,12 +965,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>General Form</h1>
+                            <h1>Preloaded Iframe</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">General Form</li>
+                                <li class="breadcrumb-item active">Preloaded Iframe</li>
                             </ol>
                         </div>
                     </div>
@@ -926,7 +979,23 @@
 
             <!-- Main content -->
             <section class="content">
+                <!-- This iframe loads from cache since the overlay iframe already fetched the content -->
                 <iframe src="content-iframe.html" style="width: 100%; height: 100vh; border: none;"></iframe>
+                
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h3 class="card-title">Preloaded Iframe Demo</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>The iframe above was loaded and displayed first, before this page content became visible.</p>
+                        <p>This demonstrates render-blocking iframe loading where:</p>
+                        <ul>
+                            <li>The iframe content is preloaded using <code>&lt;link rel="preload"&gt;</code></li>
+                            <li>The iframe shows fullscreen first via an overlay</li>
+                            <li>After the iframe loads, it moves to its final position and the page layout appears</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
             <!-- /.content -->
         </div>
@@ -966,3 +1035,4 @@
 </body>
 
 </html>
+
