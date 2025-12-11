@@ -347,6 +347,134 @@
       color: #1565c0;
     }
 
+    /* Bulk Generation Styles */
+    .bulk-generation-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px dashed #e0e0e0;
+    }
+
+    .bulk-generation-section h3 {
+      font-size: 14px;
+      color: #667eea;
+      margin: 0 0 15px 0;
+      font-weight: 600;
+    }
+
+    .bulk-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .bulk-input-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bulk-input-group label {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .bulk-input-group input[type="number"] {
+      padding: 8px 10px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .bulk-input-group input[type="number"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .bulk-mode-selector {
+      margin-bottom: 15px;
+    }
+
+    .bulk-mode-selector label {
+      display: block;
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .bulk-mode-selector select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 13px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .bulk-mode-selector select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .bulk-progress {
+      background: #f0f0f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    .bulk-progress.active {
+      display: block;
+    }
+
+    .bulk-progress-text {
+      font-size: 12px;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .bulk-progress-bar {
+      height: 8px;
+      background: #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bulk-progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .bulk-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .bulk-buttons .functional-button {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .btn-cancel {
+      background: linear-gradient(135deg, #868e96 0%, #495057 100%);
+    }
+
+    .btn-cancel:hover {
+      background: linear-gradient(135deg, #6c757d 0%, #343a40 100%);
+    }
+
     /* Scrollbar styling */
     .examples-column::-webkit-scrollbar,
     .generator-column::-webkit-scrollbar,
@@ -502,6 +630,42 @@
         <button class="functional-button btn-warning" onclick="generateRandomError()">🎲 Random Error</button>
         <button class="functional-button btn-success" onclick="generateMultiRuleError()">🎯 Multi-Rule (3 random)</button>
         <button class="functional-button btn-danger" onclick="clearGeneratedErrors()">🗑️ Clear All</button>
+
+        <!-- Bulk Generation Section -->
+        <div class="bulk-generation-section">
+          <h3>⚡ Bulk Error Generation</h3>
+          
+          <div class="bulk-inputs">
+            <div class="bulk-input-group">
+              <label for="bulk-error-count">Number of Errors</label>
+              <input type="number" id="bulk-error-count" min="1" max="1000" value="10" placeholder="10">
+            </div>
+            <div class="bulk-input-group">
+              <label for="bulk-time-frame">Time Frame (seconds)</label>
+              <input type="number" id="bulk-time-frame" min="1" max="300" value="10" placeholder="10">
+            </div>
+          </div>
+
+          <div class="bulk-mode-selector">
+            <label for="bulk-rule-mode">Rule Selection Mode</label>
+            <select id="bulk-rule-mode">
+              <option value="selected">Use currently selected rules</option>
+              <option value="random">Random rule(s) for each error</option>
+            </select>
+          </div>
+
+          <div class="bulk-progress" id="bulk-progress">
+            <div class="bulk-progress-text" id="bulk-progress-text">0 of 0 errors generated</div>
+            <div class="bulk-progress-bar">
+              <div class="bulk-progress-bar-fill" id="bulk-progress-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="bulk-buttons">
+            <button class="functional-button" id="bulk-start-btn" onclick="startBulkGeneration()">🚀 Start Bulk Generation</button>
+            <button class="functional-button btn-cancel" id="bulk-cancel-btn" onclick="cancelBulkGeneration()" style="display: none;">⏹️ Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -658,6 +822,106 @@
     function clearGeneratedErrors() {
       document.getElementById('generated-error-container').innerHTML = '';
       errorCounter = 0;
+    }
+
+    // Bulk Generation Variables
+    let bulkGenerationInterval = null;
+    let bulkErrorsGenerated = 0;
+    let bulkErrorsTarget = 0;
+
+    function startBulkGeneration() {
+      const errorCount = parseInt(document.getElementById('bulk-error-count').value) || 10;
+      const timeFrame = parseInt(document.getElementById('bulk-time-frame').value) || 10;
+      const ruleMode = document.getElementById('bulk-rule-mode').value;
+
+      // Validation
+      if (errorCount < 1 || errorCount > 1000) {
+        alert('Please enter a number of errors between 1 and 1000');
+        return;
+      }
+      if (timeFrame < 1 || timeFrame > 300) {
+        alert('Please enter a time frame between 1 and 300 seconds');
+        return;
+      }
+
+      // If using selected rules, check that at least one is selected
+      if (ruleMode === 'selected') {
+        const selectedRules = getSelectedRules();
+        if (selectedRules.length === 0) {
+          alert('Please select at least one rule when using "Use currently selected rules" mode');
+          return;
+        }
+      }
+
+      // Calculate interval in milliseconds
+      const intervalMs = (timeFrame * 1000) / errorCount;
+
+      // Reset counters
+      bulkErrorsGenerated = 0;
+      bulkErrorsTarget = errorCount;
+
+      // Update UI
+      document.getElementById('bulk-start-btn').style.display = 'none';
+      document.getElementById('bulk-cancel-btn').style.display = 'block';
+      document.getElementById('bulk-progress').classList.add('active');
+      updateBulkProgress();
+
+      // Start generation
+      bulkGenerationInterval = setInterval(() => {
+        if (bulkErrorsGenerated >= bulkErrorsTarget) {
+          completeBulkGeneration();
+          return;
+        }
+
+        // Generate error based on mode
+        if (ruleMode === 'selected') {
+          const selectedRules = getSelectedRules();
+          createErrorElement(selectedRules);
+        } else {
+          // Random mode: pick 1-3 random rules
+          const allRules = Object.keys(ruleGenerators);
+          const numRules = Math.floor(Math.random() * 3) + 1;
+          const shuffled = allRules.sort(() => 0.5 - Math.random());
+          const randomRules = shuffled.slice(0, numRules);
+          createErrorElement(randomRules);
+        }
+
+        bulkErrorsGenerated++;
+        updateBulkProgress();
+      }, intervalMs);
+    }
+
+    function cancelBulkGeneration() {
+      if (bulkGenerationInterval) {
+        clearInterval(bulkGenerationInterval);
+        bulkGenerationInterval = null;
+      }
+      resetBulkUI();
+    }
+
+    function completeBulkGeneration() {
+      if (bulkGenerationInterval) {
+        clearInterval(bulkGenerationInterval);
+        bulkGenerationInterval = null;
+      }
+      resetBulkUI();
+    }
+
+    function resetBulkUI() {
+      document.getElementById('bulk-start-btn').style.display = 'block';
+      document.getElementById('bulk-cancel-btn').style.display = 'none';
+      document.getElementById('bulk-progress').classList.remove('active');
+      bulkErrorsGenerated = 0;
+      bulkErrorsTarget = 0;
+    }
+
+    function updateBulkProgress() {
+      const progressText = document.getElementById('bulk-progress-text');
+      const progressBarFill = document.getElementById('bulk-progress-bar-fill');
+      
+      progressText.textContent = `${bulkErrorsGenerated} of ${bulkErrorsTarget} errors generated`;
+      const percentage = bulkErrorsTarget > 0 ? (bulkErrorsGenerated / bulkErrorsTarget) * 100 : 0;
+      progressBarFill.style.width = `${percentage}%`;
     }
   </script>
 </body>
