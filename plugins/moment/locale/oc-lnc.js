@@ -2,20 +2,25 @@
 //! locale : Occitan, lengadocian dialecte [oc-lnc]
 //! author : Quentin PAGÈS : https://github.com/Quenty31
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
     var ocLnc = moment.defineLocale('oc-lnc', {
         months: {
-            standalone: 'genièr_febrièr_març_abril_mai_junh_julhet_agost_setembre_octòbre_novembre_decembre'.split(
-                '_'
-            ),
+            standalone:
+                'genièr_febrièr_març_abril_mai_junh_julhet_agost_setembre_octòbre_novembre_decembre'.split(
+                    '_'
+                ),
             format: "de genièr_de febrièr_de març_d'abril_de mai_de junh_de julhet_d'agost_de setembre_d'octòbre_de novembre_de decembre".split(
                 '_'
             ),
@@ -25,9 +30,7 @@
             '_'
         ),
         monthsParseExact: true,
-        weekdays: 'dimenge_diluns_dimars_dimècres_dijòus_divendres_dissabte'.split(
-            '_'
-        ),
+        weekdays: 'dimenge_diluns_dimars_dimècres_dijòus_divendres_dissabte'.split('_'),
         weekdaysShort: 'dg._dl._dm._dc._dj._dv._ds.'.split('_'),
         weekdaysMin: 'dg_dl_dm_dc_dj_dv_ds'.split('_'),
         weekdaysParseExact: true,
@@ -72,12 +75,12 @@
                 number === 1
                     ? 'r'
                     : number === 2
-                    ? 'n'
-                    : number === 3
-                    ? 'r'
-                    : number === 4
-                    ? 't'
-                    : 'è';
+                      ? 'n'
+                      : number === 3
+                        ? 'r'
+                        : number === 4
+                          ? 't'
+                          : 'è';
             if (period === 'w' || period === 'W') {
                 output = 'a';
             }
@@ -90,5 +93,4 @@
     });
 
     return ocLnc;
-
-})));
+});
