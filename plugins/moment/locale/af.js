@@ -2,12 +2,16 @@
 //! locale : Afrikaans [af]
 //! author : Werner Mollentze : https://github.com/wernerm
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
@@ -16,9 +20,7 @@
             '_'
         ),
         monthsShort: 'Jan_Feb_Mrt_Apr_Mei_Jun_Jul_Aug_Sep_Okt_Nov_Des'.split('_'),
-        weekdays: 'Sondag_Maandag_Dinsdag_Woensdag_Donderdag_Vrydag_Saterdag'.split(
-            '_'
-        ),
+        weekdays: 'Sondag_Maandag_Dinsdag_Woensdag_Donderdag_Vrydag_Saterdag'.split('_'),
         weekdaysShort: 'Son_Maa_Din_Woe_Don_Vry_Sat'.split('_'),
         weekdaysMin: 'So_Ma_Di_Wo_Do_Vr_Sa'.split('_'),
         meridiemParse: /vm|nm/i,
@@ -66,10 +68,7 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(ste|de)/,
         ordinal: function (number) {
-            return (
-                number +
-                (number === 1 || number === 8 || number >= 20 ? 'ste' : 'de')
-            ); // Thanks to Joris Röling : https://github.com/jjupiter
+            return number + (number === 1 || number === 8 || number >= 20 ? 'ste' : 'de'); // Thanks to Joris Röling : https://github.com/jjupiter
         },
         week: {
             dow: 1, // Maandag is die eerste dag van die week.
@@ -78,5 +77,4 @@
     });
 
     return af;
-
-})));
+});
