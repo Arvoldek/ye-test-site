@@ -1,63 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Level 2 Iframe - Nested Container</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <script src="../../ye_script.js" defer></script>
-    <style>
-        body { margin: 10px; background-color: #fff3cd; }
-        .level-indicator {
-            background: linear-gradient(45deg, #ffc107, #fd7e14);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .iframe-container {
-            border: 3px solid #ffc107;
-            border-radius: 8px;
-            padding: 10px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .iframe-title {
-            color: #ffc107;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .level-info {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            border-left: 4px solid #ffc107;
-        }
-    </style>
-</head>
-<body>
-    <div class="level-indicator">Level 2 - Middle Iframe Level</div>
-    <div class="level-info">
-        <strong>This is Level 2:</strong> An iframe within the main page that contains another iframe (Level 3).
-        This demonstrates nested iframe structures.
-    </div>
-    <div class="iframe-container">
-        <div class="iframe-title">Loading Level 3 Iframe</div>
-        <iframe src="level3-iframe.html" style="width: 100%; height: 500px; border: 2px solid #dee2e6; border-radius: 5px;"></iframe>
-    </div>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Level 2 Iframe - Nested Container</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+        />
+        <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css" />
+        <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+        <script src="../../ye_script.js" defer></script>
+        <style>
+            body {
+                margin: 10px;
+                background-color: #fff3cd;
+            }
+            .level-indicator {
+                background: linear-gradient(45deg, #ffc107, #fd7e14);
+                color: white;
+                padding: 8px 15px;
+                border-radius: 20px;
+                font-weight: bold;
+                display: inline-block;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .iframe-container {
+                border: 3px solid #ffc107;
+                border-radius: 8px;
+                padding: 10px;
+                background: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+            .iframe-title {
+                color: #ffc107;
+                font-weight: bold;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .level-info {
+                background: #f8f9fa;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                border-left: 4px solid #ffc107;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="level-indicator">Level 2 - Middle Iframe Level</div>
+        <div class="level-info">
+            <strong>This is Level 2:</strong> An iframe within the main page that contains
+            another iframe (Level 3). This demonstrates nested iframe structures.
+        </div>
+        <div class="iframe-container">
+            <div class="iframe-title">Loading Level 3 Iframe</div>
+            <iframe
+                src="level3-iframe.html"
+                style="
+                    width: 100%;
+                    height: 500px;
+                    border: 2px solid #dee2e6;
+                    border-radius: 5px;
+                "
+            ></iframe>
+        </div>
 
-    <script>
-        // Add some dynamic content to show this level is active
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Level 2 iframe loaded successfully');
-        });
-    </script>
-</body>
+        <script>
+            // Add some dynamic content to show this level is active
+            document.addEventListener('DOMContentLoaded', function () {
+                console.log('Level 2 iframe loaded successfully');
+            });
+        </script>
+    </body>
 </html>

@@ -2,18 +2,21 @@
 //! locale : Frisian [fy]
 //! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split(
-            '_'
-        ),
+    var monthsShortWithDots =
+            'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split('_'),
         monthsShortWithoutDots = 'jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des'.split(
             '_'
         );
@@ -32,9 +35,7 @@
             }
         },
         monthsParseExact: true,
-        weekdays: 'snein_moandei_tiisdei_woansdei_tongersdei_freed_sneon'.split(
-            '_'
-        ),
+        weekdays: 'snein_moandei_tiisdei_woansdei_tongersdei_freed_sneon'.split('_'),
         weekdaysShort: 'si._mo._ti._wo._to._fr._so.'.split('_'),
         weekdaysMin: 'Si_Mo_Ti_Wo_To_Fr_So'.split('_'),
         weekdaysParseExact: true,
@@ -72,10 +73,7 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(ste|de)/,
         ordinal: function (number) {
-            return (
-                number +
-                (number === 1 || number === 8 || number >= 20 ? 'ste' : 'de')
-            );
+            return number + (number === 1 || number === 8 || number >= 20 ? 'ste' : 'de');
         },
         week: {
             dow: 1, // Monday is the first day of the week.
@@ -84,5 +82,4 @@
     });
 
     return fy;
-
-})));
+});

@@ -2,12 +2,16 @@
 //! locale : Bulgarian [bg]
 //! author : Krasen Borisov : https://github.com/kraz
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
-   factory(global.moment)
-}(this, (function (moment) { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' &&
+    typeof module !== 'undefined' &&
+    typeof require === 'function'
+        ? factory(require('../moment'))
+        : typeof define === 'function' && define.amd
+          ? define(['../moment'], factory)
+          : factory(global.moment);
+})(this, function (moment) {
+    'use strict';
 
     //! moment.js locale configuration
 
@@ -16,9 +20,7 @@
             '_'
         ),
         monthsShort: 'яну_фев_мар_апр_май_юни_юли_авг_сеп_окт_ное_дек'.split('_'),
-        weekdays: 'неделя_понеделник_вторник_сряда_четвъртък_петък_събота'.split(
-            '_'
-        ),
+        weekdays: 'неделя_понеделник_вторник_сряда_четвъртък_петък_събота'.split('_'),
         weekdaysShort: 'нед_пон_вто_сря_чет_пет_съб'.split('_'),
         weekdaysMin: 'нд_пн_вт_ср_чт_пт_сб'.split('_'),
         longDateFormat: {
@@ -94,5 +96,4 @@
     });
 
     return bg;
-
-})));
+});
