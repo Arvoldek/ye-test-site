@@ -17,7 +17,7 @@
         <script src="../../../ye_script.js" defer></script>
     </head>
 
-    <body>
+    <body style="overflow-y: scroll;">
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
@@ -28,12 +28,84 @@
             <form>
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="exampleInputFirstName">First Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputFirstName"
+                            placeholder="Enter first name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputLastName">Last Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputLastName"
+                            placeholder="Enter last name"
+                        />
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input
                             type="email"
                             class="form-control"
                             id="exampleInputEmail1"
                             placeholder="Enter email"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPhone">Phone Number</label>
+                        <input
+                            type="tel"
+                            class="form-control"
+                            id="exampleInputPhone"
+                            placeholder="Enter phone number"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputAddress">Street Address</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputAddress"
+                            placeholder="Enter street address"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity">City</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputCity"
+                            placeholder="Enter city"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputState">State</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputState"
+                            placeholder="Enter state"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputZip">Zip Code</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputZip"
+                            placeholder="Enter zip code"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCountry">Country</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputCountry"
+                            placeholder="Enter country"
                         />
                     </div>
                     <div class="form-group">
@@ -44,6 +116,51 @@
                             id="exampleInputPassword1"
                             placeholder="Password"
                         />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Confirm Password</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword2"
+                            placeholder="Confirm password"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCompany">Company</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputCompany"
+                            placeholder="Enter company name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputJobTitle">Job Title</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="exampleInputJobTitle"
+                            placeholder="Enter job title"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputWebsite">Website</label>
+                        <input
+                            type="url"
+                            class="form-control"
+                            id="exampleInputWebsite"
+                            placeholder="Enter website URL"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputBio">Bio</label>
+                        <textarea
+                            class="form-control"
+                            id="exampleInputBio"
+                            rows="4"
+                            placeholder="Tell us about yourself"
+                        ></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">File input</label>
@@ -63,6 +180,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputNotes">Additional Notes</label>
+                        <textarea
+                            class="form-control"
+                            id="exampleInputNotes"
+                            rows="4"
+                            placeholder="Any additional notes"
+                        ></textarea>
+                    </div>
                     <div class="form-check">
                         <input
                             type="checkbox"
@@ -71,6 +197,16 @@
                         />
                         <label class="form-check-label" for="exampleCheck1"
                             >Check me out</label
+                        >
+                    </div>
+                    <div class="form-check" style="margin-top: 0.5rem;">
+                        <input
+                            type="checkbox"
+                            class="form-check-input"
+                            id="exampleCheck2"
+                        />
+                        <label class="form-check-label" for="exampleCheck2"
+                            >I agree to the terms and conditions</label
                         >
                     </div>
                 </div>
